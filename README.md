@@ -29,7 +29,6 @@ Follow these instructions to build and run the example program.
 
 1. Use Java 17
 2. Start the demo program and web server
-    * NOT YET IMPLEMENTED
     * ```shell
       ./gradlew run
       ```
