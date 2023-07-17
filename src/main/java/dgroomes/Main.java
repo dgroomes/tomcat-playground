@@ -7,8 +7,10 @@ import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.io.IOException;
+import java.util.logging.LogManager;
 
 /**
  * Please see the README for more information.
@@ -20,7 +22,14 @@ public class Main {
     Context ctx;
 
     public static void main(String[] args) throws Exception {
-        log.info("Let's learn about Apache Tomcat by running an embedded server");
+        log.info("Let's learn about Apache Tomcat by running an embedded server...");
+
+        // Tomcat logs with JUL (java.util.logging). We want Tomcat to log through our preferred logging system which is
+        // SLF4J (including the logging implementation 'slf4j-simple'). We can bridge JUL to SLF4J using the 'jul-to-slf4j'
+        // library and the snippet below.
+        LogManager.getLogManager().reset();
+        SLF4JBridgeHandler.install();
+
         new Main().run();
     }
 

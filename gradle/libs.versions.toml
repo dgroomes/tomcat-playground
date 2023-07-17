@@ -9,4 +9,5 @@ tomcat = "10.1.11"
 
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+slf4j-jul = { module = "org.slf4j:jul-to-slf4j", version.ref = "slf4j" }
 tomcat-embedded = { module = "org.apache.tomcat.embed:tomcat-embed-core", version.ref = "tomcat" }

@@ -45,7 +45,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
 
 * [x] DONE Implement the project. Do the minimum to run an embedded Tomcat server (I'm not very interested in
   a non-embedded Tomcat server at this time. I'm not sure that I'm using the right words).
-* [ ] Clean up the logging. Is Tomcat logging via SLF4J?
+* [x] DONE Clean up the logging. Is Tomcat logging via SLF4J?
 * [ ] Consider exploring servlets just a little bit
 * [ ] Consider exploring Tomcat's support for Java virtual threads
 * [ ] Serve a static file (we love static content, let's have a working example).
