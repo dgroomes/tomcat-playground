@@ -61,7 +61,10 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [ ] Consider exploring the servlet API just a little bit more
 * [ ] Consider exploring Tomcat's support for Java virtual threads
 * [ ] Serve a static file (we love static content, let's have a working example).
-* [ ] Set the file stuff to a temp directory or something. I'm seeing a `tomcat.8080` directory in the project root.
+* [x] DONE Set the file stuff to a temp directory or something. I'm seeing a `tomcat.8080` directory in the project root.
+* [ ] What is Tomcat's (or I guess the Servlet API's) support for routing? I know there isn't really support but the
+  paths to the servlets your register is a form of simple routing. Though these days we really expect a router to key
+  off of path variables, query parameters, headers, etc. Can we extend the routing code? Where is it?
 
 
 ## Reference

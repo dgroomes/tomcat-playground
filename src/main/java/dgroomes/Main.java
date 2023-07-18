@@ -68,6 +68,11 @@ public class Main {
     void initTomcatBoilerplate() {
         tomcat = new Tomcat();
 
+        // This is kind of annoying but Tomcat, even in embedded mode, requires a working directory. It does stuff with
+        // unpacking WAR files and JSP compilation. But we don't use that functionality here so the directory structure
+        // is just empty directories. This is called "accidental complexity".
+        tomcat.setBaseDir("tomcat-work-dir");
+
         // As with any server, we need to define a port to listen on.
         tomcat.setPort(8080);
 
