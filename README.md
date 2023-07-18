@@ -33,8 +33,18 @@ Follow these instructions to build and run the example program.
       ./gradlew run
       ```
 3. Open the browser
-    * Let's see the final effect by opening the browser to <http://localhost:8080/message>. You should see a special
+    * Let's see the final effect by opening the browser to <http://[::1]:8080/message>. You should see a special
       message from the server.
+    * The program will log something that looks like the following.
+    * ```text
+      21:56:38 [main] INFO dgroomes.Main - Let's learn about Apache Tomcat by running an embedded server...
+      21:56:38 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+      21:56:38 [main] INFO org.apache.catalina.core.StandardService - Starting service [Tomcat]
+      21:56:38 [main] INFO org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+      21:56:38 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+      21:56:38 [main] INFO dgroomes.Main - Open http://[::1]:8080/message in your browser to see the message. Press Ctrl-C to stop the program and server.
+      21:56:44 [http-nio-8080-exec-1] INFO access-log - 0:0:0:0:0:0:0:1 - - [17/Jul/2023:21:56:44 -0500] "GET /message HTTP/1.1" 200 31
+      ```
 4. Stop the server
     * When you're ready, stop the demo program and server with the `Ctrl+C` key combination.
 
@@ -46,10 +56,13 @@ General clean-ups, TODOs and things I wish to implement for this project:
 * [x] DONE Implement the project. Do the minimum to run an embedded Tomcat server (I'm not very interested in
   a non-embedded Tomcat server at this time. I'm not sure that I'm using the right words).
 * [x] DONE Clean up the logging. Is Tomcat logging via SLF4J?
-* [ ] Consider exploring servlets just a little bit
+* [x] DONE Access logs?
+* [ ] What are connectors and why do we need to do `getConnector()`?
+* [ ] Consider exploring the servlet API just a little bit more
 * [ ] Consider exploring Tomcat's support for Java virtual threads
 * [ ] Serve a static file (we love static content, let's have a working example).
 * [ ] Set the file stuff to a temp directory or something. I'm seeing a `tomcat.8080` directory in the project root.
+
 
 ## Reference
 

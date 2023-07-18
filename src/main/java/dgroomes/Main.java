@@ -5,10 +5,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.valves.AbstractAccessLogValve;
+import org.apache.catalina.valves.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
+import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.util.logging.LogManager;
 
@@ -40,9 +43,22 @@ public class Main {
         Tomcat.addServlet(ctx, "messageServlet", new MessageServlet());
         ctx.addServletMappingDecoded("/message", "messageServlet");
 
+        configureAccessLogs();
+
         // Start the server and make the main thread wait till the server is stopped
         tomcat.start();
+        log.info("Open http://[::1]:8080/message in your browser to see the message. Press Ctrl-C to stop the program and server.");
         tomcat.getServer().await();
+    }
+
+    /**
+     * Enable and configure access logging to log to our preferred logging system: SLF4J.
+     */
+    private void configureAccessLogs() {
+        var accessLogValve = new Slf4jAccessLogValve();
+        accessLogValve.setPattern(Constants.AccessLog.COMMON_PATTERN);
+
+        tomcat.getHost().getPipeline().addValve(accessLogValve);
     }
 
     /**
@@ -70,5 +86,18 @@ class MessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/plain");
         resp.getWriter().write("Hello from 'tomcat-playground'!");
+    }
+}
+
+/**
+ * A custom access log {@link org.apache.catalina.Valve} that logs to SLF4J.
+ */
+class Slf4jAccessLogValve extends AbstractAccessLogValve {
+
+    private static final Logger log = LoggerFactory.getLogger("access-log");
+
+    @Override
+    public void log(CharArrayWriter message) {
+        log.info(message.toString());
     }
 }
