@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.valves.AbstractAccessLogValve;
 import org.apache.catalina.valves.Constants;
@@ -21,6 +22,8 @@ import java.util.logging.LogManager;
 public class Main {
 
     static final Logger log = LoggerFactory.getLogger(Main.class);
+    static final int PORT = 8080;
+
     Tomcat tomcat;
     Context ctx;
 
@@ -74,14 +77,17 @@ public class Main {
         tomcat.setBaseDir("tomcat-work-dir");
 
         // As with any server, we need to define a port to listen on.
-        tomcat.setPort(8080);
+        tomcat.setPort(PORT);
 
         // "Context" is a concept in Tomcat. It's some kind of "container". It's a bit abstract to me. I haven't learned
         // much about it yet. Can we do something with that second parameter "docBase"?
         ctx = tomcat.addContext("", null);
 
-        // This is an odd but required step. See https://stackoverflow.com/a/59282431
-        tomcat.getConnector();
+        // It's easy to forget that Tomcat requires a "connector". If you miss this, you might be left perplexed/stuck
+        // when Tomcat isn't responding to any traffic. See https://stackoverflow.com/a/59282431
+        var connector = new Connector("HTTP/1.1");
+        connector.setPort(PORT);
+        tomcat.getService().addConnector(connector);
     }
 }
 

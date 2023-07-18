@@ -57,7 +57,7 @@ General clean-ups, TODOs and things I wish to implement for this project:
   a non-embedded Tomcat server at this time. I'm not sure that I'm using the right words).
 * [x] DONE Clean up the logging. Is Tomcat logging via SLF4J?
 * [x] DONE Access logs?
-* [ ] What are connectors and why do we need to do `getConnector()`?
+* [x] DONE What are connectors and why do we need to do `getConnector()`?
 * [ ] Consider exploring the servlet API just a little bit more
 * [ ] Consider exploring Tomcat's support for Java virtual threads
 * [ ] Serve a static file (we love static content, let's have a working example).
