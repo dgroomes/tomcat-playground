@@ -37,13 +37,13 @@ Follow these instructions to build and run the example program.
       message from the server.
     * The program will log something that looks like the following.
     * ```text
-      21:56:38 [main] INFO dgroomes.Main - Let's learn about Apache Tomcat by running an embedded server...
-      21:56:38 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-      21:56:38 [main] INFO org.apache.catalina.core.StandardService - Starting service [Tomcat]
-      21:56:38 [main] INFO org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
-      21:56:38 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-      21:56:38 [main] INFO dgroomes.Main - Open http://[::1]:8080/message in your browser to see the message. Press Ctrl-C to stop the program and server.
-      21:56:44 [http-nio-8080-exec-1] INFO access-log - 0:0:0:0:0:0:0:1 - - [17/Jul/2023:21:56:44 -0500] "GET /message HTTP/1.1" 200 31
+      23:39:48 [main] INFO dgroomes.Main - Let's learn about Apache Tomcat by running an embedded server...
+      23:39:49 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+      23:39:49 [main] INFO org.apache.catalina.core.StandardService - Starting service [Tomcat]
+      23:39:49 [main] INFO org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+      23:39:49 [main] INFO org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+      23:39:49 [main] INFO dgroomes.Main - Open http://[::1]:8080/message in your browser to see the message. Press Ctrl-C to stop the program and server.
+      23:40:02 [http-nio-8080-exec-1] DEBUG access-log - 0:0:0:0:0:0:0:1 - - [02/Dec/2023:23:40:02 -0600] "GET /message HTTP/1.1" 200 31
       ```
 4. Stop the server
     * When you're ready, stop the demo program and server with the `Ctrl+C` key combination.

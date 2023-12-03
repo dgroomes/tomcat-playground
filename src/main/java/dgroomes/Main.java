@@ -14,6 +14,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.io.CharArrayWriter;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.LogManager;
 
 /**
@@ -33,8 +34,11 @@ public class Main {
         // Tomcat logs with JUL (java.util.logging). We want Tomcat to log through our preferred logging system which is
         // SLF4J (including the logging implementation 'slf4j-simple'). We can bridge JUL to SLF4J using the 'jul-to-slf4j'
         // library and the snippet below.
+        //
+        // See https://stackoverflow.com/a/9117188
         LogManager.getLogManager().reset();
         SLF4JBridgeHandler.install();
+        LogManager.getLogManager().getLogger("").setLevel(Level.FINE);
 
         new Main().run();
     }
@@ -109,6 +113,6 @@ class Slf4jAccessLogValve extends AbstractAccessLogValve {
 
     @Override
     public void log(CharArrayWriter message) {
-        log.info(message.toString());
+        log.debug(message.toString());
     }
 }
