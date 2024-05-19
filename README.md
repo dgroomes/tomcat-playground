@@ -27,12 +27,17 @@ This might turn into more of a servlet playground than a Tomcat playground. We'l
 
 Follow these instructions to build and run the example program.
 
-1. Use Java 17
-2. Start the demo program and web server
+1. Pre-requisite: Java
+    * I used Java 21
+2. Build the program distribution
     * ```shell
-      ./gradlew run
+      ./gradlew installDist
       ```
-3. Open the browser
+3. Start the demo program and web server
+    * ```shell
+      ./build/install/tomcat-playground/bin/tomcat-playground
+      ```
+4. Open the browser
     * Let's see the final effect by opening the browser to <http://[::1]:8080/message>. You should see a special
       message from the server.
     * The program will log something that looks like the following.
@@ -45,7 +50,7 @@ Follow these instructions to build and run the example program.
       23:39:49 [main] INFO dgroomes.Main - Open http://[::1]:8080/message in your browser to see the message. Press Ctrl-C to stop the program and server.
       23:40:02 [http-nio-8080-exec-1] DEBUG access-log - 0:0:0:0:0:0:0:1 - - [02/Dec/2023:23:40:02 -0600] "GET /message HTTP/1.1" 200 31
       ```
-4. Stop the server
+5. Stop the server
     * When you're ready, stop the demo program and server with the `Ctrl+C` key combination.
 
 
